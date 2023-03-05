@@ -1,5 +1,4 @@
 # To-Do-List-App
-
 The To-Do List Manager is a simple desktop application that helps users manage their tasks and stay organized. With features like task creation, task management, task reminders, and recurring tasks, this app is the perfect solution for anyone looking to stay on top of their to-do list.
 
 ##Features.
@@ -19,7 +18,6 @@ The To-Do List Manager includes the following features:
 The To-Do List Manager uses the following dependencies:
 
   - JavaFX for the graphical user interface.
-  - JFoenix for styling.
   - Java Mail API for sending email reminders.
 
 
