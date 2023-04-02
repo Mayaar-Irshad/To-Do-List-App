@@ -1,8 +1,10 @@
 /*
 * this GUI class is for Interface of the app 
 */
+package todoapp;
 
 import javax.swing.*;
+
 import java.awt.*;
 import java.awt.event.*;
 
