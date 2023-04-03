@@ -23,6 +23,8 @@ public class ToDoListGUI extends JFrame {
         JLabel taskLabel = new JLabel("Task:");
         JButton addButton = new JButton("Add");
         JButton deleteButton = new JButton("Delete");
+        //Create Frame
+        JFrame frame = new JFrame();
 
         // Add components to content pane
         Container contentPane = getContentPane();
@@ -68,5 +70,8 @@ public class ToDoListGUI extends JFrame {
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
+        //Set Title of frame and location where it runs 
+        setTitle("Task Manager");
+        setLocationRelaitveTo(null);
     }
 }
