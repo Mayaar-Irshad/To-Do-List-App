@@ -1,5 +1,5 @@
 /*
-* this Task class is for creating tasks and managing tasks
+* this Task class is for creating tasks and its attributes
 */
 package todoapp;
 

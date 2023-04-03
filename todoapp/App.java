@@ -1,7 +1,7 @@
 package todoapp;
 
 /*
-* . this Main class is for running the App 
+* . this class is for running the App 
 */
 
 public class App {
