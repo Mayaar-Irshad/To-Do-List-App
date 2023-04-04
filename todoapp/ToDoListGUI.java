@@ -4,11 +4,9 @@
 package todoapp;
 
 import javax.swing.*;
-
 import java.awt.*;
 import java.awt.event.*;
-
-import java.util.ArrayList;
+import java.util.*;
 
 public class ToDoListGUI extends JFrame {
     private ArrayList<Task> tasks = new ArrayList<>();
@@ -17,7 +15,6 @@ public class ToDoListGUI extends JFrame {
     private JTextField taskTextField = new JTextField(20);
 
     public ToDoListGUI() {
-        setTitle("To-Do List App");
 
         // Create components
         JLabel taskLabel = new JLabel("Task:");
@@ -47,7 +44,7 @@ public class ToDoListGUI extends JFrame {
                 String taskName = taskTextField.getText();
                 Task task = new Task(taskName);
                 tasks.add(task);
-                taskListModel.addElement(task.getTaskName());
+                taskListModel.addElement(task.getTitle());
                 taskTextField.setText("");
             }
         });
@@ -69,6 +66,6 @@ public class ToDoListGUI extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
         setLocationRelativeTo(null);
-        setTitle("Pending");
+        setTitle("TaskMate");
     }
 }
