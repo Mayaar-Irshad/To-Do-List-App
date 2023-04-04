@@ -2,7 +2,8 @@
 // Task Manger class 
 package todoapp;
 
-import java.util.ArrayList;
+import java.util.*;
+import java.util.Collections;
 import java.util.List;
 import java.util.Date;
 import todoapp.Task; // import task class from todoapp package
@@ -67,9 +68,29 @@ public class TaskManager {
 
     // getTaskByPriority
     // returns a list of tasks with a matching priority
+    public List<Task> getTasksByPriority(int priority) {
+
+        List<Task> matchingTasks = new ArrayList<>();
+        for (Task task : tasks) {
+            if (task.getPriority() == priority) {
+                matchingTasks.add(task);
+            }
+        }
+        return matchingTasks;
+
+    }
 
     // Sort tasks by priority
     // sorting tasks by priority DESCENDING
+    public List<Task> sortTasksByPriority(int priority) {
+        Collections.sort(tasks, new Comparator<Task>() {
+            @Override
+            public int compare(Task task1, Task task2) {
+                return Integer.compare(task2.getPriority(), task1.getPriority());
+            }
+        });
+
+    }
 
     // note: sort tasks by priority ascending method for 2nd spring.
 }

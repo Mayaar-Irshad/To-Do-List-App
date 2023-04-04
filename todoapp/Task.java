@@ -10,6 +10,7 @@ public class Task {
     private String title;
     private String description;
     private Date dueDate;
+    private int Priority;
     private boolean completed;
 
     // constructor
@@ -43,6 +44,14 @@ public class Task {
 
     public void setDueDate(Date dueDate) {
         this.dueDate = dueDate;
+    }
+
+    public int getPriority() {
+        return Priority;
+    }
+
+    public void setPriority(int Priority) {
+        this.Priority = Priority;
     }
 
     public boolean isCompleted() {
