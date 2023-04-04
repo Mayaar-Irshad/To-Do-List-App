@@ -68,5 +68,7 @@ public class ToDoListGUI extends JFrame {
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
+        setLocationRelativeTo(null);
+        setTitle("Pending");
     }
 }
