@@ -82,14 +82,15 @@ public class TaskManager {
 
     // Sort tasks by priority
     // sorting tasks by priority DESCENDING
-    public List<Task> sortTasksByPriority(int priority) {
-        Collections.sort(tasks, new Comparator<Task>() {
+    public List<Task> sortTasksByPriority() {
+        List<Task> sortedTasks = new ArrayList<>(tasks);
+        Collections.sort(sortedTasks, new Comparator<Task>() {
             @Override
             public int compare(Task task1, Task task2) {
                 return Integer.compare(task2.getPriority(), task1.getPriority());
             }
         });
-
+        return sortedTasks;
     }
 
     // note: sort tasks by priority ascending method for 2nd spring.
