@@ -64,4 +64,12 @@ public class TaskManager {
         }
         return matchingTasks;
     }
+
+    // getTaskByPriority
+    // returns a list of tasks with a matching priority
+
+    // Sort tasks by priority
+    // sorting tasks by priority DESCENDING
+
+    // note: sort tasks by priority ascending method for 2nd spring.
 }
