@@ -10,24 +10,22 @@ public class Task {
     private String title;
     private String description;
     private Date dueDate;
-    private int Priority = -1;
-    private boolean completed;
+    private int priority = -1; // by default, priority level is set as undefined
+    private boolean completed = false; // by default, a task is not completed
 
     // constructor
     public Task(String title, String description, Date dueDate) {
         this.title = title;
         this.description = description;
         this.dueDate = dueDate;
-        completed = false; // by default, a task is not completed
     }
     
-        // overloaded constructor for optional priority parameter
+    // overloaded constructor to create an optional parameter for the variable priority
     public Task(String title, String description, Date dueDate, int priority) {
         this.title = title;
         this.description = description;
         this.dueDate = dueDate;
         this.priority = priority;
-        completed = false; // by default, a task is not completed
     }
 
     // getters and setters
@@ -56,16 +54,16 @@ public class Task {
     }
 
     public int getPriority() {
-        return Priority;
+        return priority;
     }
 
-    public void setPriority(int Priority) {
+    public void setPriority(int priority) {
         // topic for discussion in meeting
         // potentially add enum type to signify which integer represents which level of priority
-        this.Priority = Priority;
+        this.priority = priority;
     }
 
-    public boolean isCompleted() {
+    public boolean getCompleted() {
         return completed;
     }
     
