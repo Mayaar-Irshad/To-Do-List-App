@@ -60,10 +60,8 @@ public class Task {
     }
 
     public void setPriority(int Priority) {
-        // 3 = high priority
-        // 2 = medium priority
-        // 1 = low priority
-        // -1 = undefined
+        // topic for discussion in meeting
+        // potentially add enum type to signify which integer represents which level of priority
         this.Priority = Priority;
     }
 
