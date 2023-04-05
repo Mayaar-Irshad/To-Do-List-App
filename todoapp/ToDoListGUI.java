@@ -7,6 +7,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 
 public class ToDoListGUI extends JFrame {
     private ArrayList<Task> tasks = new ArrayList<>();
@@ -20,6 +23,10 @@ public class ToDoListGUI extends JFrame {
         JLabel taskLabel = new JLabel("Task:");
         JButton addButton = new JButton("Add");
         JButton deleteButton = new JButton("Delete");
+        JMenuBar menuBar = new JMenuBar();
+        JMenu fileMenu = new JMenu("Menu");
+        JMenuItem MenuOne = new JMenuItem("Today's Tasks");
+        JMenuItem MenuTwo = new JMenuItem("TaskManger");
 
         // Add components to content pane
         Container contentPane = getContentPane();
@@ -67,5 +74,13 @@ public class ToDoListGUI extends JFrame {
         setVisible(true);
         setLocationRelativeTo(null);
         setTitle("TaskMate");
+
+        // Menu
+        setJMenuBar(menuBar);
+        fileMenu.add(MenuOne);
+        fileMenu.add(MenuTwo);
+        menuBar.add(fileMenu);
+        ImageIcon icon = new ImageIcon("Menu.png"); // idk how to put the image as the icon
+        fileMenu.setIcon(icon);
     }
 }
