@@ -10,7 +10,7 @@ public class Task {
     private String title;
     private String description;
     private Date dueDate;
-    private int Priority;
+    private int Priority = -1;
     private boolean completed;
 
     // constructor
@@ -18,6 +18,15 @@ public class Task {
         this.title = title;
         this.description = description;
         this.dueDate = dueDate;
+        completed = false; // by default, a task is not completed
+    }
+    
+        // overloaded constructor for optional priority parameter
+    public Task(String title, String description, Date dueDate, int priority) {
+        this.title = title;
+        this.description = description;
+        this.dueDate = dueDate;
+        this.priority = priority;
         completed = false; // by default, a task is not completed
     }
 
@@ -51,14 +60,22 @@ public class Task {
     }
 
     public void setPriority(int Priority) {
+        // 3 = high priority
+        // 2 = medium priority
+        // 1 = low priority
+        // -1 = undefined
         this.Priority = Priority;
     }
 
     public boolean isCompleted() {
         return completed;
     }
-
+    
     public void setCompleted(boolean completed) {
         this.completed = completed;
+    }
+    
+    public void markAsComplete() {
+        this.completed = true;
     }
 }
