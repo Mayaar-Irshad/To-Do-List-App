@@ -27,6 +27,7 @@ public class ToDoListGUI extends JFrame {
         JMenu fileMenu = new JMenu("Menu");
         JMenuItem MenuOne = new JMenuItem("Today's Tasks");
         JMenuItem MenuTwo = new JMenuItem("TaskManger");
+        JMenuItem MenuExit = new JMenuItem("Exit");
 
         // Add components to content pane
         Container contentPane = getContentPane();
@@ -40,8 +41,8 @@ public class ToDoListGUI extends JFrame {
         JPanel bottomPanel = new JPanel();
         bottomPanel.add(deleteButton);
 
-        contentPane.add(topPanel, BorderLayout.NORTH);
-        contentPane.add(new JScrollPane(taskList), BorderLayout.CENTER);
+        contentPane.add(topPanel, BorderLayout.EAST);
+        // contentPane.add(new JScrollPane(taskList), BorderLayout.CENTER);
         contentPane.add(bottomPanel, BorderLayout.SOUTH);
 
         // Add listeners
@@ -79,8 +80,19 @@ public class ToDoListGUI extends JFrame {
         setJMenuBar(menuBar);
         fileMenu.add(MenuOne);
         fileMenu.add(MenuTwo);
+        fileMenu.add(MenuExit);
         menuBar.add(fileMenu);
         ImageIcon icon = new ImageIcon("Menu.png"); // idk how to put the image as the icon
         fileMenu.setIcon(icon);
+
+        JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.NORTH);
+        JPanel panel1, panel2;
+        panel1 = new JPanel();
+        panel2 = new JPanel();
+        tabbedPane.setBackground(Color.white);
+        tabbedPane.addTab("My Day", panel1);
+        tabbedPane.addTab("Tasks", panel2);
+        add(tabbedPane);
     }
+
 }

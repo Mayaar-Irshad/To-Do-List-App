@@ -5,6 +5,7 @@ package todoapp;
 */
 
 public class App {
+    
     public static void main(String[] args) {
         ToDoListGUI todoList = new ToDoListGUI();
     }
