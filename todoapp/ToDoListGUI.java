@@ -25,8 +25,8 @@ public class ToDoListGUI extends JFrame {
         JButton deleteButton = new JButton("Delete");
         JMenuBar menuBar = new JMenuBar();
         JMenu fileMenu = new JMenu("Menu");
-        JMenuItem MenuOne = new JMenuItem("My Day");
-        JMenuItem MenuTwo = new JMenuItem("Tasks");
+        JMenuItem MenuOne = new JMenuItem("Today's Tasks");
+        JMenuItem MenuTwo = new JMenuItem("TaskManger");
         JMenuItem MenuExit = new JMenuItem("Exit");
 
         // Add components to content pane
@@ -41,7 +41,7 @@ public class ToDoListGUI extends JFrame {
         JPanel bottomPanel = new JPanel();
         bottomPanel.add(deleteButton);
 
-        // contentPane.add(topPanel, BorderLayout.EAST);
+        contentPane.add(topPanel, BorderLayout.EAST);
         // contentPane.add(new JScrollPane(taskList), BorderLayout.CENTER);
         contentPane.add(bottomPanel, BorderLayout.SOUTH);
 
@@ -68,15 +68,6 @@ public class ToDoListGUI extends JFrame {
             }
         });
 
-        MenuExit.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (e.getSource() == MenuExit) {
-                    System.exit(0);
-                }
-            }
-        });
-
         // Set frame properties
         setSize(500, 400);
         setLocationRelativeTo(null);
@@ -90,17 +81,26 @@ public class ToDoListGUI extends JFrame {
         fileMenu.add(MenuOne);
         fileMenu.add(MenuTwo);
         fileMenu.add(MenuExit);
-
         menuBar.add(fileMenu);
         ImageIcon icon = new ImageIcon("Menu.png"); // idk how to put the image as the icon
         fileMenu.setIcon(icon);
 
         JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.NORTH);
+        JPanel panel1, panel2;
+        panel1 = new JPanel();
+        panel2 = new JPanel();
         tabbedPane.setBackground(Color.white);
-        tabbedPane.addTab("My Day", topPanel);
-        tabbedPane.addTab("Tasks", bottomPanel);
+        tabbedPane.addTab("My Day", panel1);
+        tabbedPane.addTab("Tasks", panel2);
         add(tabbedPane);
 
+        JPanel gridPanel = new JPanel(new BorderLayout());
+        gridPanel.setLayout(new GridLayout(0,4));
+        panel1.add(gridPanel, BorderLayout.NORTH);
+        gridPanel.add(new Label("Task Name"));
+        gridPanel.add(new Label("Priority"));
+        gridPanel.add(new Label("Date"));
+        gridPanel.add(new Label("Status"));
     }
 
 }
