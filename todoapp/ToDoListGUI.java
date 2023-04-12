@@ -15,13 +15,13 @@ public class ToDoListGUI extends JFrame {
     private ArrayList<Task> tasks = new ArrayList<>();
     private DefaultListModel<String> taskListModel = new DefaultListModel<>();
     private JList<String> taskList = new JList<>(taskListModel);
-    private JTextField taskTextField = new JTextField(20);
+    private JTextField taskTextField = new JTextField("Search...", 15);
 
     public ToDoListGUI() {
 
         // Create components
         JLabel taskLabel = new JLabel("Task:");
-        JButton addButton = new JButton("Add");
+        JButton addButton = new JButton("+ Add Task");
         JButton deleteButton = new JButton("Delete");
         JMenuBar menuBar = new JMenuBar();
         JMenu fileMenu = new JMenu("Menu");
@@ -31,28 +31,113 @@ public class ToDoListGUI extends JFrame {
 
         // Add components to content pane
         Container contentPane = getContentPane();
-        contentPane.setLayout(new BorderLayout());
+        contentPane.setLayout(new GridBagLayout());
 
-        JPanel topPanel = new JPanel();
-        topPanel.add(taskLabel);
-        topPanel.add(taskTextField);
-        topPanel.add(addButton);
+        GridBagConstraints gbc = new GridBagConstraints();
+        
+        // First row
+        gbc.anchor = GridBagConstraints.NORTHWEST;
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        JButton myDayButton = new JButton("My Day");
+        contentPane.add(myDayButton, gbc);
+        
+        gbc.anchor = GridBagConstraints.NORTHWEST;
+        gbc.weightx = 1;
+        gbc.gridx = 1;
+        gbc.gridy = 0;
+        JButton tasksButton = new JButton("Tasks");
+        contentPane.add(tasksButton, gbc);
+        
+        gbc.anchor = GridBagConstraints.FIRST_LINE_END;
+        gbc.gridwidth = 10;
+        gbc.weightx = 0;
+        gbc.gridx = 2;
+        gbc.gridy = 0;
+        contentPane.add(taskTextField, gbc);
+        
+        // Row 2
+        gbc.anchor = GridBagConstraints.CENTER;
+        gbc.fill = GridBagConstraints.BOTH;
+        gbc.weightx = 1;
+        gbc.weighty = 1;
+        gbc.gridwidth = 100;
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        final JPanel myDayPanel = new JPanel(new GridBagLayout());
+        final JPanel tasksPanel = new JPanel(new GridBagLayout());
+        myDayPanel.setBackground(Color.WHITE);
+        tasksPanel.setBackground(Color.WHITE);
+        contentPane.add(myDayPanel, gbc);
+        contentPane.add(tasksPanel, gbc);
 
-        JPanel bottomPanel = new JPanel();
-        bottomPanel.add(deleteButton);
+        // Final Row
+        gbc.anchor = GridBagConstraints.SOUTH;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.weightx = 1;
+        gbc.weighty = 0;
+        gbc.gridwidth = 100;
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        contentPane.add(addButton, gbc);
+        
+        // Everything about the "My Day" panel
+        gbc.anchor = GridBagConstraints.NORTHWEST;
+        gbc.fill = GridBagConstraints.NONE;
+        gbc.weightx = 1;
+        gbc.weighty = 1;
+        gbc.gridwidth = 1;
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        myDayPanel.add(new Label("Today's Tasks"), gbc);
+        
+        // Everything about the "Tasks" panel
+        gbc.anchor = GridBagConstraints.NORTHWEST;
+        gbc.fill = GridBagConstraints.NONE;
+        gbc.weightx = 1;
+        gbc.weighty = 1;
+        gbc.gridwidth = 1;
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        tasksPanel.add(new Label("Task Name"), gbc);
+        
+        gbc.anchor = GridBagConstraints.NORTH;
+        gbc.gridx = 1;
+        gbc.gridy = 0;
+        tasksPanel.add(new Label("Priority"), gbc);
+        
+        gbc.anchor = GridBagConstraints.NORTH;
+        gbc.gridx = 2;
+        gbc.gridy = 0;
+        tasksPanel.add(new Label("Due Date"), gbc);
+        
+        gbc.anchor = GridBagConstraints.NORTH;
+        gbc.gridx = 3;
+        gbc.gridy = 0;
+        tasksPanel.add(new Label("Status"), gbc);
 
-        contentPane.add(topPanel, BorderLayout.EAST);
-        // contentPane.add(new JScrollPane(taskList), BorderLayout.CENTER);
-        contentPane.add(bottomPanel, BorderLayout.SOUTH);
+        myDayButton.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		myDayPanel.setVisible(true);
+        		tasksPanel.setVisible(false);
+        	}
+        });
+        
+        tasksButton.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		myDayPanel.setVisible(false);
+        		tasksPanel.setVisible(true);
+        	}
+        });
 
         // Add listeners
         addButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String taskName = taskTextField.getText();
-                Task task = new Task(taskName);
-                tasks.add(task);
-                taskListModel.addElement(task.getTitle());
+                //Task task = new Task(taskName);
+                //tasks.add(task);
+                //taskListModel.addElement(task.getTitle());
                 taskTextField.setText("");
             }
         });
@@ -84,23 +169,6 @@ public class ToDoListGUI extends JFrame {
         menuBar.add(fileMenu);
         ImageIcon icon = new ImageIcon("Menu.png"); // idk how to put the image as the icon
         fileMenu.setIcon(icon);
-
-        JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.NORTH);
-        JPanel panel1, panel2;
-        panel1 = new JPanel();
-        panel2 = new JPanel();
-        tabbedPane.setBackground(Color.white);
-        tabbedPane.addTab("My Day", panel1);
-        tabbedPane.addTab("Tasks", panel2);
-        add(tabbedPane);
-
-        JPanel gridPanel = new JPanel(new BorderLayout());
-        gridPanel.setLayout(new GridLayout(0,4));
-        panel1.add(gridPanel, BorderLayout.NORTH);
-        gridPanel.add(new Label("Task Name"));
-        gridPanel.add(new Label("Priority"));
-        gridPanel.add(new Label("Date"));
-        gridPanel.add(new Label("Status"));
     }
 
 }
