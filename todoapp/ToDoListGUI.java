@@ -11,7 +11,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
-public class ToDoListGUI extends JFrame implements ActionListener {
+public class ToDoListGUI extends JFrame {
     private ArrayList<Task> tasks = new ArrayList<>();
     private DefaultListModel<String> taskListModel = new DefaultListModel<>();
     private JList<String> taskList = new JList<>(taskListModel);
@@ -51,6 +51,7 @@ public class ToDoListGUI extends JFrame implements ActionListener {
 
         gbc.anchor = GridBagConstraints.FIRST_LINE_END;
         gbc.gridwidth = 10;
+        gbc.insets = new Insets(1, 1, 1, 1);
         gbc.weightx = 0;
         gbc.gridx = 2;
         gbc.gridy = 0;
@@ -59,6 +60,7 @@ public class ToDoListGUI extends JFrame implements ActionListener {
         // Row 2
         gbc.anchor = GridBagConstraints.CENTER;
         gbc.fill = GridBagConstraints.BOTH;
+        gbc.insets = new Insets(0, 0, 0, 0);
         gbc.weightx = 1;
         gbc.weighty = 1;
         gbc.gridwidth = 100;
@@ -72,13 +74,13 @@ public class ToDoListGUI extends JFrame implements ActionListener {
         contentPane.add(tasksPanel, gbc);
 
         // Final Row
-        gbc.anchor = GridBagConstraints.SOUTH;
-        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.anchor = GridBagConstraints.FIRST_LINE_END;
+        gbc.fill = GridBagConstraints.NONE;
         gbc.weightx = 1;
         gbc.weighty = 0;
-        gbc.gridwidth = 100;
-        gbc.gridx = 0;
-        gbc.gridy = 2;
+        gbc.gridwidth = 1;
+        gbc.gridx = 1;
+        gbc.gridy = 0;
         contentPane.add(addButton, gbc);
 
         // Everything about the "My Day" panel
