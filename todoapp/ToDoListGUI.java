@@ -11,7 +11,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
-public class ToDoListGUI extends JFrame {
+public class ToDoListGUI extends JFrame implements ActionListener {
     private ArrayList<Task> tasks = new ArrayList<>();
     private DefaultListModel<String> taskListModel = new DefaultListModel<>();
     private JList<String> taskList = new JList<>(taskListModel);
@@ -34,28 +34,28 @@ public class ToDoListGUI extends JFrame {
         contentPane.setLayout(new GridBagLayout());
 
         GridBagConstraints gbc = new GridBagConstraints();
-        
+
         // First row
         gbc.anchor = GridBagConstraints.NORTHWEST;
         gbc.gridx = 0;
         gbc.gridy = 0;
         JButton myDayButton = new JButton("My Day");
         contentPane.add(myDayButton, gbc);
-        
+
         gbc.anchor = GridBagConstraints.NORTHWEST;
         gbc.weightx = 1;
         gbc.gridx = 1;
         gbc.gridy = 0;
         JButton tasksButton = new JButton("Tasks");
         contentPane.add(tasksButton, gbc);
-        
+
         gbc.anchor = GridBagConstraints.FIRST_LINE_END;
         gbc.gridwidth = 10;
         gbc.weightx = 0;
         gbc.gridx = 2;
         gbc.gridy = 0;
         contentPane.add(taskTextField, gbc);
-        
+
         // Row 2
         gbc.anchor = GridBagConstraints.CENTER;
         gbc.fill = GridBagConstraints.BOTH;
@@ -80,7 +80,7 @@ public class ToDoListGUI extends JFrame {
         gbc.gridx = 0;
         gbc.gridy = 2;
         contentPane.add(addButton, gbc);
-        
+
         // Everything about the "My Day" panel
         gbc.anchor = GridBagConstraints.NORTHWEST;
         gbc.fill = GridBagConstraints.NONE;
@@ -90,7 +90,7 @@ public class ToDoListGUI extends JFrame {
         gbc.gridx = 0;
         gbc.gridy = 0;
         myDayPanel.add(new Label("Today's Tasks"), gbc);
-        
+
         // Everything about the "Tasks" panel
         gbc.anchor = GridBagConstraints.NORTHWEST;
         gbc.fill = GridBagConstraints.NONE;
@@ -100,45 +100,43 @@ public class ToDoListGUI extends JFrame {
         gbc.gridx = 0;
         gbc.gridy = 0;
         tasksPanel.add(new Label("Task Name"), gbc);
-        
+
         gbc.anchor = GridBagConstraints.NORTH;
         gbc.gridx = 1;
         gbc.gridy = 0;
         tasksPanel.add(new Label("Priority"), gbc);
-        
+
         gbc.anchor = GridBagConstraints.NORTH;
         gbc.gridx = 2;
         gbc.gridy = 0;
         tasksPanel.add(new Label("Due Date"), gbc);
-        
+
         gbc.anchor = GridBagConstraints.NORTH;
         gbc.gridx = 3;
         gbc.gridy = 0;
         tasksPanel.add(new Label("Status"), gbc);
 
         myDayButton.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        		myDayPanel.setVisible(true);
-        		tasksPanel.setVisible(false);
-        	}
+            public void actionPerformed(ActionEvent e) {
+                myDayPanel.setVisible(true);
+                tasksPanel.setVisible(false);
+            }
         });
-        
+
         tasksButton.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        		myDayPanel.setVisible(false);
-        		tasksPanel.setVisible(true);
-        	}
+            public void actionPerformed(ActionEvent e) {
+                myDayPanel.setVisible(false);
+                tasksPanel.setVisible(true);
+            }
         });
 
         // Add listeners
         addButton.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
-                String taskName = taskTextField.getText();
-                //Task task = new Task(taskName);
-                //tasks.add(task);
-                //taskListModel.addElement(task.getTitle());
-                taskTextField.setText("");
+            public void actionPerformed(ActionEvent evt) {
+                if (evt.getSource() == addButton) {
+                    AddTaskWindow addtask = new AddTaskWindow();
+                }
             }
         });
 
@@ -169,6 +167,9 @@ public class ToDoListGUI extends JFrame {
         menuBar.add(fileMenu);
         ImageIcon icon = new ImageIcon("Menu.png"); // idk how to put the image as the icon
         fileMenu.setIcon(icon);
+
+        // Add Button opens new JFrame
+
     }
 
 }
