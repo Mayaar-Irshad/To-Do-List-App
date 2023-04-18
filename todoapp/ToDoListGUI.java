@@ -8,7 +8,6 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
 
-
 public class ToDoListGUI extends JFrame {
     private ArrayList<Task> tasks = new ArrayList<>();
     private DefaultListModel<String> taskListModel = new DefaultListModel<>();
@@ -154,7 +153,6 @@ public class ToDoListGUI extends JFrame {
         setTitle("TaskMate");
 
         // JTextField
-        taskTextField.setPreferredSize(new Dimension(10, 26));
         taskTextField.setToolTipText("Enter your task");
         taskTextField.addFocusListener(new FocusListener() {
             @Override
@@ -171,6 +169,7 @@ public class ToDoListGUI extends JFrame {
                 }
             }
         });
+
     }
 
 }

@@ -12,7 +12,7 @@ public class AddTaskWindow extends JFrame {
     private JLabel priorityLabel = new JLabel("Priority");
     private JTextField taskNameField = new JTextField(15);
     private JTextField dueDateField = new JTextField("MM/DD/YYYY", 15);
-    private String priorities[] = {"Undefined", "Low", "Medium", "High"};
+    private String priorities[] = { "Undefined", "Low", "Medium", "High" };
     private JComboBox priorityBox = new JComboBox(priorities);
     private JButton applyButton = new JButton("Apply");
     private JButton closeButton = new JButton("Close");
@@ -26,6 +26,46 @@ public class AddTaskWindow extends JFrame {
         setVisible(true);
         setLocationRelativeTo(null);
         setTitle("Add Tasks");
+
+        closeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (e.getSource() == closeButton) {
+                    dispose();
+                }
+            }
+        });
+
+        taskNameField.addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent event) {
+                if (taskNameField.getText().equals("Enter Task Name")) {
+                    taskNameField.setText("");
+                }
+            }
+
+            @Override
+            public void focusLost(FocusEvent event) {
+                if (taskNameField.getText().equals("")) {
+                    taskNameField.setText("Enter Task Name");
+                }
+            }
+        });
+        dueDateField.addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent event) {
+                if (dueDateField.getText().equals("MM/DD/YYYY")) {
+                    dueDateField.setText("");
+                }
+            }
+
+            @Override
+            public void focusLost(FocusEvent event) {
+                if (dueDateField.getText().equals("")) {
+                    dueDateField.setText("MM/DD/YYYY");
+                }
+            }
+        });
 
     }
 
