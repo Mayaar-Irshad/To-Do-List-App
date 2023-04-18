@@ -152,7 +152,7 @@ public class ToDoListGUI extends JFrame implements ActionListener {
         });
 
         // Set frame properties
-        setSize(500, 400);
+        setSize(600, 500);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
