@@ -7,11 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
+
 
 public class ToDoListGUI extends JFrame {
     private ArrayList<Task> tasks = new ArrayList<>();
@@ -24,11 +20,6 @@ public class ToDoListGUI extends JFrame {
         // Create components
         JButton addButton = new JButton("+ Add Task");
         JButton deleteButton = new JButton("Delete");
-        JMenuBar menuBar = new JMenuBar();
-        JMenu fileMenu = new JMenu("Menu");
-        JMenuItem MenuOne = new JMenuItem("Today's Tasks");
-        JMenuItem MenuTwo = new JMenuItem("TaskManger");
-        JMenuItem MenuExit = new JMenuItem("Exit");
 
         // Add components to content pane
         Container contentPane = getContentPane();
@@ -161,15 +152,6 @@ public class ToDoListGUI extends JFrame {
         setVisible(true);
         setLocationRelativeTo(null);
         setTitle("TaskMate");
-
-        // Menu
-        setJMenuBar(menuBar);
-        fileMenu.add(MenuOne);
-        fileMenu.add(MenuTwo);
-        fileMenu.add(MenuExit);
-        menuBar.add(fileMenu);
-        ImageIcon icon = new ImageIcon("Menu.png"); // idk how to put the image as the icon
-        fileMenu.setIcon(icon);
 
         // JTextField
         taskTextField.setPreferredSize(new Dimension(10, 26));
