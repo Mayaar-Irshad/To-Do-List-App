@@ -22,7 +22,6 @@ public class ToDoListGUI extends JFrame {
     public ToDoListGUI() {
 
         // Create components
-        JLabel taskLabel = new JLabel("Task:");
         JButton addButton = new JButton("+ Add Task");
         JButton deleteButton = new JButton("Delete");
         JMenuBar menuBar = new JMenuBar();
