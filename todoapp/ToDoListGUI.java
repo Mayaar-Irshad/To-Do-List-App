@@ -10,6 +10,8 @@ import java.util.*;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 
 public class ToDoListGUI extends JFrame {
     private ArrayList<Task> tasks = new ArrayList<>();
@@ -170,8 +172,24 @@ public class ToDoListGUI extends JFrame {
         ImageIcon icon = new ImageIcon("Menu.png"); // idk how to put the image as the icon
         fileMenu.setIcon(icon);
 
-        // Add Button opens new JFrame
+        // JTextField
+        taskTextField.setPreferredSize(new Dimension(10, 26));
+        taskTextField.setToolTipText("Enter your task");
+        taskTextField.addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent event) {
+                if (taskTextField.getText().equals("Search...")) {
+                    taskTextField.setText("");
+                }
+            }
 
+            @Override
+            public void focusLost(FocusEvent event) {
+                if (taskTextField.getText().equals("")) {
+                    taskTextField.setText("Search...");
+                }
+            }
+        });
     }
 
 }
