@@ -51,6 +51,7 @@ public class AddTaskWindow extends JFrame {
                 }
             }
         });
+        taskNameField.setToolTipText("Enter Task Name");
         dueDateField.addFocusListener(new FocusListener() {
             @Override
             public void focusGained(FocusEvent event) {
@@ -66,6 +67,7 @@ public class AddTaskWindow extends JFrame {
                 }
             }
         });
+        dueDateField.setToolTipText("Enter Your Task's Due Date");
 
     }
 
