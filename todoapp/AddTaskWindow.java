@@ -11,11 +11,11 @@ import java.util.*;
 
 public class AddTaskWindow extends JFrame {
 
-    private JLabel taskNameLabel = new JLabel("Task Name");
-    private JLabel dueDateLabel = new JLabel("Due Date");
-    private JLabel priorityLabel = new JLabel("Priority");
-    private JTextField taskNameField = new JTextField(15);
-    private JTextField dueDateField = new JTextField("MM/DD/YYYY", 15);
+    private JLabel taskNameLabel = new JLabel("Task Name:");
+    private JLabel dueDateLabel = new JLabel("Due Date:");
+    private JLabel priorityLabel = new JLabel("Priority:");
+    private JTextField taskNameField = new JTextField(13);
+    private JTextField dueDateField = new JTextField("MM/DD/YYYY", 8);
     private String priorities[] = { "Undefined", "Low", "Medium", "High" };
     private JComboBox<String> priorityBox = new JComboBox<String>(priorities);
     private JButton applyButton = new JButton("Add Task");
@@ -27,50 +27,63 @@ public class AddTaskWindow extends JFrame {
         setSize(300, 350);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setTitle("Add a New Task");
         setVisible(true);
-        setTitle("Add Task");
     }
 
     private void setupLayout() {
+    	GridBagConstraints gbc = new GridBagConstraints();
         JPanel contentPanel = new JPanel(new GridBagLayout());
+        contentPanel.setBackground(new Color(245, 247, 247));
         add(contentPanel);
-        GridBagConstraints gbc = new GridBagConstraints();
 
         // Adding components
-        gbc.anchor = GridBagConstraints.CENTER;
+        gbc.anchor = GridBagConstraints.LINE_END;
         gbc.gridx = 0;
         gbc.gridy = 0;
-        gbc.weighty = 1;
+        gbc.weightx = 0.5;
+        gbc.weighty = 0.25;
+        gbc.insets = new Insets(15,0,0,25);
+        taskNameLabel.setFont(taskNameLabel.getFont().deriveFont(Font.PLAIN));
         contentPanel.add(taskNameLabel, gbc);
 
+        gbc.anchor = GridBagConstraints.LINE_START;
         gbc.gridx = 1;
         gbc.gridy = 0;
         contentPanel.add(taskNameField, gbc);
 
+        gbc.anchor = GridBagConstraints.LINE_END;
         gbc.gridx = 0;
         gbc.gridy = 1;
-        gbc.weighty = 0;
+        gbc.insets = new Insets(0,0,0,25);
+        dueDateLabel.setFont(dueDateLabel.getFont().deriveFont(Font.PLAIN));
         contentPanel.add(dueDateLabel, gbc);
 
+        gbc.anchor = GridBagConstraints.LINE_START;
         gbc.gridx = 1;
         gbc.gridy = 1;
         contentPanel.add(dueDateField, gbc);
 
+        gbc.anchor = GridBagConstraints.LINE_END;
         gbc.gridx = 0;
         gbc.gridy = 2;
-        gbc.weighty = 1;
+        priorityLabel.setFont(priorityLabel.getFont().deriveFont(Font.PLAIN));
         contentPanel.add(priorityLabel, gbc);
 
+        gbc.anchor = GridBagConstraints.LINE_START;
         gbc.gridx = 1;
         gbc.gridy = 2;
         contentPanel.add(priorityBox, gbc);
 
+        gbc.anchor = GridBagConstraints.CENTER;
         gbc.gridx = 0;
         gbc.gridy = 3;
+        gbc.insets = new Insets(20,40,0,0);
         contentPanel.add(applyButton, gbc);
 
         gbc.gridx = 1;
         gbc.gridy = 3;
+        gbc.insets = new Insets(20,0,0,0);
         contentPanel.add(closeButton, gbc);
         
         // Action listeners
@@ -98,7 +111,7 @@ public class AddTaskWindow extends JFrame {
                 }
             }
         });
-        taskNameField.setToolTipText("Enter Task Name");
+        taskNameField.setToolTipText("Enter task name.");
         
         dueDateField.addFocusListener(new FocusListener() {
             @Override
@@ -115,7 +128,7 @@ public class AddTaskWindow extends JFrame {
                 }
             }
         });
-        dueDateField.setToolTipText("Enter Your Task's Due Date");
+        dueDateField.setToolTipText("Enter your task's due date.");
     }
 
 }
