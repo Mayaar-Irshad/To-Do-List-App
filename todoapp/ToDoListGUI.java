@@ -13,17 +13,30 @@ public class ToDoListGUI extends JFrame {
     private DefaultListModel<String> taskListModel = new DefaultListModel<>();
     private JList<String> taskList = new JList<>(taskListModel);
     private JTextField taskTextField = new JTextField("Search...", 15);
+    private JButton addButton = new JButton("+ New Task");
+    private MyDayPanel myDayPanel = new MyDayPanel();
+    private TasksPanel tasksPanel = new TasksPanel();
 
     public ToDoListGUI() {
 
+    	super();
+    	setupLayout();
+    }
+    
+    private void setupLayout() {
+    	// Set frame properties
+        setSize(800, 500);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setVisible(true);
+        setTitle("TaskMate");
+    	
         // Create components
-        JButton addButton = new JButton("+ Add Task");
         JButton deleteButton = new JButton("Delete");
 
-        // Add components to content pane
-        Container contentPane = getContentPane();
-        contentPane.setLayout(new GridBagLayout());
-
+        // Add components to content panel
+        JPanel contentPanel = new JPanel(new GridBagLayout());
+        add(contentPanel);
         GridBagConstraints gbc = new GridBagConstraints();
 
         // First row
@@ -31,14 +44,14 @@ public class ToDoListGUI extends JFrame {
         gbc.gridx = 0;
         gbc.gridy = 0;
         JButton myDayButton = new JButton("My Day");
-        contentPane.add(myDayButton, gbc);
+        contentPanel.add(myDayButton, gbc);
 
         gbc.anchor = GridBagConstraints.NORTHWEST;
         gbc.weightx = 1;
         gbc.gridx = 1;
         gbc.gridy = 0;
         JButton tasksButton = new JButton("Tasks");
-        contentPane.add(tasksButton, gbc);
+        contentPanel.add(tasksButton, gbc);
 
         gbc.anchor = GridBagConstraints.FIRST_LINE_END;
         gbc.gridwidth = 10;
@@ -46,9 +59,9 @@ public class ToDoListGUI extends JFrame {
         gbc.weightx = 0;
         gbc.gridx = 2;
         gbc.gridy = 0;
-        contentPane.add(taskTextField, gbc);
+        contentPanel.add(taskTextField, gbc);
 
-        // Row 2
+        // Second Row
         gbc.anchor = GridBagConstraints.CENTER;
         gbc.fill = GridBagConstraints.BOTH;
         gbc.insets = new Insets(0, 0, 0, 0);
@@ -57,12 +70,8 @@ public class ToDoListGUI extends JFrame {
         gbc.gridwidth = 100;
         gbc.gridx = 0;
         gbc.gridy = 1;
-        final JPanel myDayPanel = new JPanel(new GridBagLayout());
-        final JPanel tasksPanel = new JPanel(new GridBagLayout());
-        myDayPanel.setBackground(Color.WHITE);
-        tasksPanel.setBackground(Color.WHITE);
-        contentPane.add(myDayPanel, gbc);
-        contentPane.add(tasksPanel, gbc);
+        contentPanel.add(myDayPanel, gbc);
+        contentPanel.add(tasksPanel, gbc);
 
         // Final Row
         gbc.anchor = GridBagConstraints.FIRST_LINE_END;
@@ -72,43 +81,9 @@ public class ToDoListGUI extends JFrame {
         gbc.gridwidth = 1;
         gbc.gridx = 1;
         gbc.gridy = 0;
-        contentPane.add(addButton, gbc);
+        contentPanel.add(addButton, gbc);
 
-        // Everything about the "My Day" panel
-        gbc.anchor = GridBagConstraints.NORTHWEST;
-        gbc.fill = GridBagConstraints.NONE;
-        gbc.weightx = 1;
-        gbc.weighty = 1;
-        gbc.gridwidth = 1;
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        myDayPanel.add(new Label("Today's Tasks"), gbc);
-
-        // Everything about the "Tasks" panel
-        gbc.anchor = GridBagConstraints.NORTHWEST;
-        gbc.fill = GridBagConstraints.NONE;
-        gbc.weightx = 1;
-        gbc.weighty = 1;
-        gbc.gridwidth = 1;
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        tasksPanel.add(new Label("Task Name"), gbc);
-
-        gbc.anchor = GridBagConstraints.NORTH;
-        gbc.gridx = 1;
-        gbc.gridy = 0;
-        tasksPanel.add(new Label("Priority"), gbc);
-
-        gbc.anchor = GridBagConstraints.NORTH;
-        gbc.gridx = 2;
-        gbc.gridy = 0;
-        tasksPanel.add(new Label("Due Date"), gbc);
-
-        gbc.anchor = GridBagConstraints.NORTH;
-        gbc.gridx = 3;
-        gbc.gridy = 0;
-        tasksPanel.add(new Label("Status"), gbc);
-
+        // Action Listeners
         myDayButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 myDayPanel.setVisible(true);
@@ -123,12 +98,12 @@ public class ToDoListGUI extends JFrame {
             }
         });
 
-        // Add listeners
+        // Add task button listener
         addButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
                 if (evt.getSource() == addButton) {
-                    AddTaskWindow addtask = new AddTaskWindow();
+                    new AddTaskWindow();
                 }
             }
         });
@@ -144,15 +119,7 @@ public class ToDoListGUI extends JFrame {
             }
         });
 
-        // Set frame properties
-        setSize(600, 500);
-        setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setVisible(true);
-        setLocationRelativeTo(null);
-        setTitle("TaskMate");
-
-        // JTextField
+        // Search JTextField
         taskTextField.setToolTipText("Enter your task");
         taskTextField.addFocusListener(new FocusListener() {
             @Override
