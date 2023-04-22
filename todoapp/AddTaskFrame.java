@@ -28,7 +28,7 @@ public class AddTaskFrame extends JFrame {
 		super();
     	setupLayout();
     	setupListeners();
-    	setSize(300, 350);
+    	setSize(350, 350);
     	setLocationRelativeTo(null);
     	setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     	setTitle("Add a New Task");
