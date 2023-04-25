@@ -33,7 +33,7 @@ public class MainFrame extends JFrame {
 		setupLayout();
 		setupListeners();
 		// Set frame properties
-		setSize(800, 500);
+		setSize(1000, 700);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("TaskMate");
