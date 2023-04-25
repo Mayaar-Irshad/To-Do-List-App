@@ -150,9 +150,9 @@ public class AddTaskFrame extends JFrame {
 
 
 	private void setupListeners() {
-   	 	taskNameField.addFocusListener(new taskNameListener());
-   	 	dueDateField.addFocusListener(new dueDateListener());
-   	 	createButton.addActionListener(new createListener());
-   	 	closeButton.addActionListener(new closeListener());
+		taskNameField.addFocusListener(new taskNameListener());
+		dueDateField.addFocusListener(new dueDateListener());
+		createButton.addActionListener(new createListener());
+		closeButton.addActionListener(new closeListener());
 	}
 }
