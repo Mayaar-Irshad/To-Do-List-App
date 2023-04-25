@@ -17,6 +17,8 @@ import javax.swing.JPanel;
 public class MyDayPanel extends JPanel {
 
     private JLabel greetingLabel;
+	private Font font;
+	private Font modifyFont;
     
     public MyDayPanel() {
    	 	super();
@@ -28,6 +30,8 @@ public class MyDayPanel extends JPanel {
     	setLayout(new GridBagLayout());
    	 	GridBagConstraints gbc = new GridBagConstraints();
    	 	setBackground(new Color(245, 247, 247));
+		font = new Font("STIXGeneral", Font.BOLD, 24);
+		modifyFont = font.deriveFont(15f);
 
    	 	gbc.anchor = GridBagConstraints.FIRST_LINE_START;
    	 	gbc.weightx = 1;
@@ -36,7 +40,7 @@ public class MyDayPanel extends JPanel {
     	gbc.gridy = 0;
     	gbc.insets = new Insets(15, 25, 0, 0);
     	greetingLabel = new JLabel(generateGreeting());
-    	greetingLabel.setFont(greetingLabel.getFont().deriveFont(Font.PLAIN));
+    	greetingLabel.setFont(modifyFont);
     	add(greetingLabel, gbc);
    	 
     	gbc.weighty = 0.99;
