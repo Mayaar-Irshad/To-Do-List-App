@@ -22,6 +22,7 @@ public class AddTaskFrame extends JFrame {
 	private JComboBox<String> priorityBox = new JComboBox<>(priorities);
 	private JButton createButton = new JButton("Create");
 	private JButton closeButton = new JButton("Close");
+	private TaskManager taskList = new TaskManager();
 
 	// Constructor
 	public AddTaskFrame() {
@@ -71,7 +72,25 @@ public class AddTaskFrame extends JFrame {
 	private class createListener implements ActionListener {
    	 	@Override
    	 	public void actionPerformed(ActionEvent e) {
-   	 		
+   	 		LocalDateTime tmp = LocalDateTime.parse(dueDateField.getText());
+   	 		int priority = -1;
+   	 		switch (priorityBox.getSelectedItem().toString()) {
+   	 		case "Low":
+   	 			priority = 0;
+   	 			break;
+   	 		case "Medium":
+   	 			priority = 1;
+   	 			break;
+   	 		case "High":
+   	 			priority = 2;
+   	 			break;
+   	 		default:
+   	 			priority = -1;
+   	 			break;
+   	 		}
+   	 		Task t = new Task(taskNameField.getText(), "", tmp, priority);
+   	 		taskList.addTask(t);
+   	 		taskList.getTasks().get(0).getTitle();
    	 	}
 	}
     
