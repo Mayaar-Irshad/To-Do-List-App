@@ -38,7 +38,7 @@ public class MainFrame extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("TaskMate");
 		setVisible(true);
-		setResizable(false);
+		//To Make it not resizable // setResizable(false);
 	}
 
 	// Listeners
