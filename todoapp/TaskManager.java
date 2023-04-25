@@ -5,7 +5,7 @@ package todoapp;
 import java.util.*;
 import java.util.Collections;
 import java.util.List;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class TaskManager {
 	private ArrayList<Task> tasks; // list of tasks
@@ -21,7 +21,7 @@ public class TaskManager {
 	}
 
 	// updates the details of a task
-	public void editTask(Task task, String title, String description, Date dueDate) {
+	public void editTask(Task task, String title, String description, LocalDateTime dueDate) {
     	task.setTitle(title);
     	task.setDescription(description);
     	task.setDueDate(dueDate);
@@ -43,7 +43,7 @@ public class TaskManager {
 	}
 
 	// returns a list of tasks with a due date equal to the parameter
-	public ArrayList<Task> getTasksByDate(Date dueDate) {
+	public ArrayList<Task> getTasksByDate(LocalDateTime dueDate) {
     	ArrayList<Task> matchingTasks = new ArrayList<>();
     	for (Task task : tasks) {
         	if (task.getDueDate().equals(dueDate)) { // check if due date matches

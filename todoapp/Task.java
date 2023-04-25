@@ -3,25 +3,25 @@
 */
 package todoapp;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class Task {
 	// properties
 	private String title;
 	private String description;
-	private Date dueDate;
+	private LocalDateTime dueDate;
 	private int priority = -1; // by default, priority level is set as undefined
 	private boolean completed = false; // by default, a task is not completed
 
 	// constructor
-	public Task(String title, String description, Date dueDate) {
+	public Task(String title, String description, LocalDateTime dueDate) {
     	this.title = title;
     	this.description = description;
     	this.dueDate = dueDate;
 	}
     
 	// overloaded constructor to create an optional parameter for the variable priority
-	public Task(String title, String description, Date dueDate, int priority) {
+	public Task(String title, String description, LocalDateTime dueDate, int priority) {
     	this.title = title;
     	this.description = description;
     	this.dueDate = dueDate;
@@ -45,11 +45,11 @@ public class Task {
     	this.description = description;
 	}
 
-	public Date getDueDate() {
+	public LocalDateTime getDueDate() {
     	return dueDate;
 	}
 
-	public void setDueDate(Date dueDate) {
+	public void setDueDate(LocalDateTime dueDate) {
     	this.dueDate = dueDate;
 	}
 
