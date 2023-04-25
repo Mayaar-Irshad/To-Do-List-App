@@ -38,14 +38,14 @@ public class MainFrame extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("TaskMate");
 		setVisible(true);
-		//To Make it not resizable // setResizable(false);
+		setResizable(false);
 	}
 
 	// Listeners
 	private class myDayListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			myDayButton.setForeground(new Color(99, 58, 218));
+			myDayButton.setForeground(Color.WHITE);
 			tasksButton.setForeground(Color.BLACK);
 			myDayPanel.setVisible(true);
 			tasksPanel.setVisible(false);
@@ -56,7 +56,7 @@ public class MainFrame extends JFrame {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			myDayButton.setForeground(Color.BLACK);
-			tasksButton.setForeground(new Color(99, 58, 218));
+			tasksButton.setForeground(Color.WHITE);
 			myDayPanel.setVisible(false);
 			tasksPanel.setVisible(true);
 		}
@@ -88,7 +88,7 @@ public class MainFrame extends JFrame {
 	private void setupLayout() {
 		JPanel contentPanel = new JPanel(new GridBagLayout());
 		GridBagConstraints gbc = new GridBagConstraints();
-		contentPanel.setBackground(Color.WHITE);
+		contentPanel.setBackground(Color.decode("#4787b8"));
 		add(contentPanel);
 
 		// Add components to content panel
@@ -98,13 +98,13 @@ public class MainFrame extends JFrame {
 		gbc.anchor = GridBagConstraints.LAST_LINE_START;
 		gbc.gridx = 0;
 		gbc.gridy = 0;
-		gbc.weighty = 0.1;
+		gbc.weighty = 0.05;
 		gbc.insets = new Insets(0, 50, 10, 0);
 		myDayButton.setOpaque(false);
 		myDayButton.setContentAreaFilled(false);
 		myDayButton.setBorderPainted(false);
 		myDayButton.setFocusPainted(false);
-		myDayButton.setForeground(new Color(99, 58, 218));
+		myDayButton.setForeground(Color.WHITE);
 		contentPanel.add(myDayButton, gbc);
 
 		// Tasks button
@@ -135,7 +135,7 @@ public class MainFrame extends JFrame {
 		gbc.gridy = 1;
 		gbc.gridwidth = GridBagConstraints.REMAINDER;
 		gbc.weightx = 1;
-		gbc.weighty = 0.9;
+		gbc.weighty = 0.95;
 		gbc.insets = new Insets(0, 0, 0, 0);
 		contentPanel.add(myDayPanel, gbc);
 		contentPanel.add(tasksPanel, gbc);
