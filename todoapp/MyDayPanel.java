@@ -35,9 +35,9 @@ public class MyDayPanel extends JPanel {
     	gbc.gridx = 0;
     	gbc.gridy = 0;
     	gbc.insets = new Insets(15, 25, 0, 0);
-//    	greetingLabel = new JLabel(generateGreeting());
-//    	greetingLabel.setFont(greetingLabel.getFont().deriveFont(Font.PLAIN));
-//    	add(greetingLabel, gbc);
+    	greetingLabel = new JLabel(generateGreeting());
+    	greetingLabel.setFont(greetingLabel.getFont().deriveFont(Font.PLAIN));
+    	add(greetingLabel, gbc);
    	 
     	gbc.weighty = 0.99;
     	gbc.gridx = 0;
