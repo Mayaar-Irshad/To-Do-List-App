@@ -19,7 +19,7 @@ import javax.swing.table.DefaultTableModel;
 @SuppressWarnings("serial")
 public class TasksPanel extends JScrollPane {
 
-	private String[] columnNames = {"Task Name", "Priority", "Due Date", "Status"};
+	private String[] columnNames = {"<html><left>Task Name</html>", "Priority", "Due Date", "Status"};
 	private DefaultTableModel model;
 	private JTable table;
 	
@@ -62,11 +62,13 @@ public class TasksPanel extends JScrollPane {
     	});
     	table.getTableHeader().setReorderingAllowed(false);
     	table.getTableHeader().setOpaque(false);
+    	table.getTableHeader().setDefaultRenderer(new HeaderRenderer(table));
     	table.getTableHeader().setBackground(MainFrame.BOTTOM_PANEL_COLOR);
     	table.getTableHeader().setFont(new Font(MainFrame.FONT_TYPEFACE, Font.BOLD, 14));
     	table.setFont(new Font(MainFrame.FONT_TYPEFACE, Font.PLAIN, 12));
     	table.setOpaque(false);
     	table.setShowVerticalLines(false);
+    	table.setShowHorizontalLines(true);
     	table.setRowHeight(MainFrame.TABLE_HEADER_HEIGHT);
     	table.setFocusable(false);
     	table.setRowSelectionAllowed(false);

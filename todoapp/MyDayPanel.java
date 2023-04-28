@@ -100,11 +100,13 @@ public class MyDayPanel extends JPanel {
     	UIManager.getDefaults().put("TableHeader.cellBorder", BorderFactory.createMatteBorder(0,0,1,0,Color.BLACK));
     	table.getTableHeader().setReorderingAllowed(false);
     	table.getTableHeader().setOpaque(false);
+    	table.getTableHeader().setDefaultRenderer(new HeaderRenderer(table));
     	table.getTableHeader().setBackground(MainFrame.BOTTOM_PANEL_COLOR);
     	table.getTableHeader().setFont(new Font(MainFrame.FONT_TYPEFACE, Font.BOLD, 14));
     	table.setFont(new Font(MainFrame.FONT_TYPEFACE, Font.PLAIN, 12));
     	table.setOpaque(false);
     	table.setShowVerticalLines(false);
+    	table.setShowHorizontalLines(true);
     	table.setRowHeight(MainFrame.TABLE_HEADER_HEIGHT);
     	table.setFocusable(false);
     	table.setRowSelectionAllowed(false);
