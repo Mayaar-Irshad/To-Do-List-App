@@ -3,6 +3,7 @@
 */
 package todoapp;
 
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -67,6 +68,7 @@ public class TasksPanel extends JScrollPane {
     	table.getTableHeader().setFont(new Font(MainFrame.FONT_TYPEFACE, Font.BOLD, 14));
     	table.setFont(new Font(MainFrame.FONT_TYPEFACE, Font.PLAIN, 12));
     	table.setOpaque(false);
+    	table.setGridColor(Color.BLACK);
     	table.setShowVerticalLines(false);
     	table.setShowHorizontalLines(true);
     	table.setRowHeight(MainFrame.TABLE_HEADER_HEIGHT);

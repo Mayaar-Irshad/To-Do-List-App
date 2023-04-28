@@ -107,6 +107,7 @@ public class MyDayPanel extends JPanel {
     	table.setOpaque(false);
     	table.setShowVerticalLines(false);
     	table.setShowHorizontalLines(true);
+    	table.setGridColor(Color.BLACK);
     	table.setRowHeight(MainFrame.TABLE_HEADER_HEIGHT);
     	table.setFocusable(false);
     	table.setRowSelectionAllowed(false);

@@ -264,6 +264,8 @@ public class MainFrame extends JFrame {
 		gbc.weightx = 0.1;
 		gbc.weighty = 0;
 		gbc.insets = new Insets(0, 10, 10, 0);
+		newTaskButton.setOpaque(true);
+		newTaskButton.setContentAreaFilled(true);
 		newTaskButton.setBackground(TOP_PANEL_COLOR);
 		newTaskButton.setBorderPainted(false);
 		newTaskButton.setFocusPainted(false);
