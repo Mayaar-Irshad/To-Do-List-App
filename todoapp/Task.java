@@ -3,25 +3,31 @@
 */
 package todoapp;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 public class Task {
 	// properties
 	private String title;
 	private String description;
-	private LocalDateTime dueDate;
+	private LocalDate dueDate;
 	private int priority = -1; // by default, priority level is set as undefined
 	private boolean completed = false; // by default, a task is not completed
 
 	// constructor
-	public Task(String title, String description, LocalDateTime dueDate) {
+	public Task() {
+		this.title = "";
+		this.description = "";
+		this.dueDate = null;
+	}
+	
+	public Task(String title, String description, LocalDate dueDate) {
     	this.title = title;
     	this.description = description;
     	this.dueDate = dueDate;
 	}
     
 	// overloaded constructor to create an optional parameter for the variable priority
-	public Task(String title, String description, LocalDateTime dueDate, int priority) {
+	public Task(String title, String description, LocalDate dueDate, int priority) {
     	this.title = title;
     	this.description = description;
     	this.dueDate = dueDate;
@@ -45,11 +51,11 @@ public class Task {
     	this.description = description;
 	}
 
-	public LocalDateTime getDueDate() {
+	public LocalDate getDueDate() {
     	return dueDate;
 	}
 
-	public void setDueDate(LocalDateTime dueDate) {
+	public void setDueDate(LocalDate dueDate) {
     	this.dueDate = dueDate;
 	}
 
@@ -73,5 +79,53 @@ public class Task {
     
 	public void markAsComplete() {
     	this.completed = true;
+	}
+	
+	@Override
+	public boolean equals(Object o) {
+		// self check
+		if (this == o) {
+			return true;
+		}
+		// null check
+		if (o == null) {
+			return false;
+		}
+		// type check and cast
+		if (getClass() != o.getClass()) {
+			return false;
+		}
+		Task task = (Task) o;
+		return getTitle().equals(task.getTitle())
+				&& getDescription().equals(task.getDescription())
+				&& getDueDate().equals(task.getDueDate())
+				&& getPriority() == task.getPriority()
+				&& getCompleted() == task.getCompleted();
+	}
+	
+	public String priorityAsString() {
+		switch(getPriority()) {
+		case 0:
+			return "Low";
+		case 1:
+			return "Medium";
+		case 2:
+			return "High";
+		default:
+			return "Undefined";
+		}
+	}
+	
+	public int stringToPriority(String str) {
+		switch(str) {
+		case "Low":
+			return 0;
+		case "Medium":
+			return 1;
+		case "High":
+			return 2;
+		default:
+			return -1;
+		}
 	}
 }

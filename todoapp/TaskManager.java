@@ -2,10 +2,11 @@
 // Task Manger class
 package todoapp;
 
-import java.util.*;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
-import java.time.LocalDateTime;
 
 public class TaskManager {
 	private ArrayList<Task> tasks; // list of tasks
@@ -21,7 +22,7 @@ public class TaskManager {
 	}
 
 	// updates the details of a task
-	public void editTask(Task task, String title, String description, LocalDateTime dueDate) {
+	public void editTask(Task task, String title, String description, LocalDate dueDate) {
     	task.setTitle(title);
     	task.setDescription(description);
     	task.setDueDate(dueDate);
@@ -43,7 +44,7 @@ public class TaskManager {
 	}
 
 	// returns a list of tasks with a due date equal to the parameter
-	public ArrayList<Task> getTasksByDate(LocalDateTime dueDate) {
+	public ArrayList<Task> getTasksByDate(LocalDate dueDate) {
     	ArrayList<Task> matchingTasks = new ArrayList<>();
     	for (Task task : tasks) {
         	if (task.getDueDate().equals(dueDate)) { // check if due date matches
