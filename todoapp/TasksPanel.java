@@ -26,7 +26,7 @@ import javax.swing.table.TableRowSorter;
 @SuppressWarnings("serial")
 public class TasksPanel extends JScrollPane {
 
-	private String[] columnNames = {"Task Name", "Priority", "Due Date", "Status"};
+	private String[] columnNames = {"Task Name", "Priority", "Due Date", ""};
 	private DefaultTableModel model;
 	private JTable table;
 	
