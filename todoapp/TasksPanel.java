@@ -8,19 +8,25 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 
 import javax.swing.BorderFactory;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JViewport;
+import javax.swing.RowSorter;
+import javax.swing.SortOrder;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 @SuppressWarnings("serial")
 public class TasksPanel extends JScrollPane {
 
-	private String[] columnNames = {"<html><left>Task Name</html>", "Priority", "Due Date", "Status"};
+	private String[] columnNames = {"Task Name", "Priority", "Due Date", "Status"};
 	private DefaultTableModel model;
 	private JTable table;
 	
@@ -74,6 +80,36 @@ public class TasksPanel extends JScrollPane {
     	table.setRowHeight(MainFrame.TABLE_HEADER_HEIGHT);
     	table.setFocusable(false);
     	table.setRowSelectionAllowed(false);
+    	table.setAutoCreateRowSorter(true);
+    	TableRowSorter<TableModel> sorter = new TableRowSorter<>(table.getModel());
+    	table.setRowSorter(sorter);
+    	sorter.setComparator(2, new Comparator<String>() {
+    		@Override
+    		public int compare(String o1, String o2) {
+    			String[] strDate1 = o1.split("/");
+    			String[] strDate2 = o2.split("/");
+    			int[] date1 = new int[strDate1.length];
+    			int[] date2 = new int[strDate2.length];
+    			for (int i = 0; i < strDate1.length; i++) {
+    				date1[i] = Integer.parseInt(strDate1[i]);
+    				date2[i] = Integer.parseInt(strDate2[i]);
+    			}
+    			if (date1[2] != date2[2]) {
+    				return date1[2] - date2[2];
+    			} else if (date1[0] != date2[0]) {
+    				return date1[0] - date2[0];
+    			} else if (date1[1] != date2[1]) {
+    				return date1[1] - date2[1];
+    			}
+    			return 0;
+    		}
+    	});
+    	List<RowSorter.SortKey> sortKeys = new ArrayList<>();
+    	sortKeys.add(new RowSorter.SortKey(2, SortOrder.ASCENDING));
+    	sorter.setSortKeys(sortKeys);
+    	for (int i = 0; i < columnNames.length; i++) {
+    		sorter.setSortable(i, false);
+    	}
     }
     
     private class CellRenderer extends DefaultTableCellRenderer { 
