@@ -9,7 +9,6 @@ The To-Do List Manager includes the following features:
 - Task management: View, edit, and delete tasks from your to-do list, as well as mark tasks as complete.
 - Task reminders: Receive notifications when a task is due, helping you to stay on top of your to-do list.
 - Task search: Find specific tasks in your to-do list using the search function.
-- Recurring tasks: Create recurring tasks, such as weekly or monthly tasks, that automatically get added to your to-do list.
 -User-friendly interface: A simple and intuitive interface makes it easy to manage your tasks.
 
 ##Dependencies
